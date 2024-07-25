@@ -1,0 +1,177 @@
+<profile.html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Gerabuck</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #ffffff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+        }
+
+        .profile-icon img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            background-color: #2e3b4e;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .profile-header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .profile-header .buttons {
+            display: flex;
+        }
+
+        .profile-header .buttons button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .profile-header .buttons button:hover {
+            background-color: #ccc;
+        }
+
+        .profile-content {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid #2e3b4e;
+            border-radius: 0 0 8px 8px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .profile-content p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">GERABUCK</div>
+        <nav>
+            <ul>
+                <li><a href="journey.html">Journey Plan</a></li>
+                <li><a href="subscription.html">Subscription</a></li>
+            </ul>
+        </nav>
+        <div class="profile-icon"><img src="https://w7.pngwing.com/pngs/722/101/png-transparent-computer-icons-user-profile-circle-abstract-miscellaneous-rim-account.png" alt="Profile"></div>
+    </header>
+    <main>
+        <div class="profile-header">
+            <h2>Profile</h2>
+            <div class="buttons">
+                <button onclick="editProfile()">Edit Profile</button>
+                <button onclick="changePassword()">Change Password</button>
+            </div>
+        </div>
+        <div class="profile-content">
+            <p><strong>Name:</strong> <span id="profile-name"></span></p>
+            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+            <p><strong>Contact:</strong> <span id="profile-contact"></span></p>
+            <p><strong>Gender:</strong> <span id="profile-gender"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="profile-dob"></span></p>
+            <p><strong>Subscription:</strong> <span id="profile-subscription">Subscription to MyRapid newsletter</span></p>
+        </div>
+    </main>
+    <script>
+        // Example user data (this should be replaced with actual registration data)
+        const userData = {
+            name="profile-name",
+            email="profile-email",
+            contact="profile-contact",
+            gender: "Male",
+            dob: "2001-01-27"
+        };
+
+        // Function to display user data on the profile page
+        function displayUserData() {
+            document.getElementById("profile-name").innerText = userData.name;
+            document.getElementById("profile-email").innerText = userData.email;
+            document.getElementById("profile-contact").innerText = userData.contact;
+            document.getElementById("profile-gender").innerText = userData.gender;
+            document.getElementById("profile-dob").innerText = userData.dob;
+        }
+
+        // Call the function to display user data when the page loads
+        displayUserData();
+
+        function editProfile() {
+            alert("Edit Profile button clicked!");
+            // Add functionality to edit profile
+        }
+
+        function changePassword() {
+            alert("Change Password button clicked!");
+            // Add functionality to change password
+        }
+    </script>
+</body>
+</html>
