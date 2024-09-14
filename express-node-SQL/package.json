@@ -1,0 +1,20 @@
+{
+  "name": "express-node-sql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "playground.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "devAbstract": "nodemon ./serverAbstract.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

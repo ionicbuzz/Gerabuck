@@ -1,0 +1,8 @@
+package.json
+
+Actions can be automated by defining the corresponding scripts in package.json.
+
+Example: Line 9 in package.json. A script devAbstract was used to run nodemon, where the server auto restarts whenever a change to a file is detected.
+
+How to run scripts:
+>npm run [insert script here]
