@@ -4,21 +4,23 @@
 //delete book
 
 const { where } = require("sequelize");
-const { Book } = require("../models")
+const { Book } = require("../models");
 
 const createNewBook = (body) => {
     return Book.create({ ...body});
 }
 
-const findManyBooks = (searchParam) => {
+const findManyBooks = (searchParams) => {
     return Book.findAll({ where : { ...searchParams }});
 }
 
-const findBookById = (id) => {
-    return Book.findByPk(id);
+const findBookById = async (id) => {
+    const book = await Book.findByPk(id);
+    if (!book) throw new Error("A book with this id does not exist!");
+    return book;
 }
 
-const findSingleBook = (searchParam) => {
+const findSingleBook = (searchParams) => {
     return Book.findOne({ where : { ...searchParams }});
 }
 
