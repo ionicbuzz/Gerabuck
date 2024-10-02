@@ -4,7 +4,7 @@
 //delete book
 
 const { where } = require("sequelize");
-const { User } = require("../models");
+const { User, Role } = require("../models");
 
 const createNewUser = (body) => {
     return User.create({ ...body});
@@ -14,8 +14,8 @@ const findManyUsers = (searchParams) => {
     return User.findAll({ where : { ...searchParams }});
 }
 
-const findUserById = (id) => {
-    const user = User.findByPk(id);
+const findUserById = async(id) => {
+    const user = await User.findByPk(id, { include: [Role]});
     if (!user) throw new Error("A user with this id does not exist!");
     return user;
 }
@@ -27,7 +27,9 @@ const findSingleUser = (searchParams) => {
 const findUserByIdAndUpdate = async (id, body) => {
     const user = await findUserById(id);
     for (const key of Object.keys(body)) {
-        user[key] = user[key] ?? user[key];
+        if (body[key] != undefined){
+            user[key] = body[key];
+        }
     }
 
     await user.save();

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { signUpHandler, getCurrentUserHandler, userLogoutHandler, updateUserHandler } = require("../controllers/user.controller");
 const passport = require("passport");
-const isAuthenticated = require("../middleware/access-control.middleware");
+const {isAuthenticated} = require("../middleware/access-control.middleware");
 
 const router = Router();
 

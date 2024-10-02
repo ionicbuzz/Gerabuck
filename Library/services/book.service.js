@@ -3,8 +3,7 @@
 //update book
 //delete book
 
-const { where } = require("sequelize");
-const { Book } = require("../models");
+const { Book, User } = require("../models");
 
 const createNewBook = (body) => {
     return Book.create({ ...body});
@@ -15,7 +14,7 @@ const findManyBooks = (searchParams) => {
 }
 
 const findBookById = async (id) => {
-    const book = await Book.findByPk(id);
+    const book = await Book.findByPk(id, { include: [User] });
     if (!book) throw new Error("A book with this id does not exist!");
     return book;
 }

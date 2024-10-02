@@ -59,8 +59,12 @@ const bookModel = (db) => {
         author: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        isAvailable: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         }
-    })
+    });
 };
 
 module.exports = {bookModel}

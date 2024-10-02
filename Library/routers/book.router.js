@@ -1,5 +1,6 @@
 const { Router } = require("express");
-const { createBookHandler, getManyBooksHandler, updateBookHandler, deleteBookHandler } = require("../controllers/book.controller");
+const { createBookHandler, getManyBooksHandler, updateBookHandler, deleteBookHandler, bookLendingHandler } = require("../controllers/book.controller");
+const {isAuthenticated, isStaff, hasPermission} = require("../middleware/access-control.middleware");
 
 const router = Router();
 
@@ -83,8 +84,17 @@ const router = Router();
  *                          $ref: "#/components/schemas/BookDto"
  */
 
-router.route("/").post(createBookHandler).get(getManyBooksHandler);
+router.use(isAuthenticated);
+router.use(isStaff);
 
-router.route("/:id").patch(updateBookHandler).delete(deleteBookHandler);
+router.route("/")
+    .post(hasPermission('canManageBooks'), createBookHandler)
+    .get(hasPermission("canLendBooks"), getManyBooksHandler);
+
+router.route("/:id")
+    .patch(hasPermission('canManageBooks'), updateBookHandler)
+    .delete(hasPermission('canManageBooks'), deleteBookHandler);
+
+router.route("/:id/lend").patch(hasPermission("canLendBooks"), bookLendingHandler);
 
 module.exports = router;
